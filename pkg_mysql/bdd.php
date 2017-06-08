@@ -14,7 +14,7 @@ class bdd
         $db = new PDO('mysql:host=163.172.59.3;port=2206;dbname=beta', 'beta', 'PvlQ6TpblgkbPziP');
         return $db;
     }
-    public function select ($str_requete)
+    public function query ($str_requete)
     {
         $db = $this->connexion();
         $select = $db->prepare($str_requete);

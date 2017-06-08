@@ -9,3 +9,5 @@
 session_start();
 include_once 'pkg_mysql/bdd.php';
 include_once  'pkg_html/html_loader.php';
+include_once  'pkg_generate/generate_loader.php';
+include_once  'pkg_table/table_loader.php';
