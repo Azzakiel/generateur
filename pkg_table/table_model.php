@@ -31,16 +31,13 @@ class table_model
                     $arr_table_champ[] = $arr_one_champ['Field'];
                 }
                 $obj_table->setArrChamp($arr_table_champ);
-                //apres les champ on récupère les foreign key
-                $str_query = 'SHOW INDEX FROM '.$obj_table->getStrName();
+                //apres les champ on récupère les foreign key dans un tableau : objet de référence => item qui est clé étrangère dans l'objet courant
+                $str_query = 'select COLUMN_NAME, REFERENCED_TABLE_NAME from information_schema.KEY_COLUMN_USAGE where CONSTRAINT_NAME != \'PRIMARY\' AND TABLE_NAME = "'.$obj_table->getStrName().'" AND REFERENCED_TABLE_NAME is NOT null';
                 $arr_result_fk = $obj_bdd->query($str_query);
                 $arr_table_fk = null;
                 foreach ($arr_result_fk as $arr_one_fk)
                 {
-                    if ($arr_one_fk['Non_unique'] == 1)
-                    {
-                        $arr_table_fk[] = $arr_one_fk['Column_name'];
-                    }
+                    $arr_table_fk[$arr_one_fk['REFERENCED_TABLE_NAME']] = $arr_one_fk['COLUMN_NAME'];
                 }
                 $obj_table->setArrFk($arr_table_fk);
                 $arr_obj_table[] = $obj_table;
@@ -49,3 +46,4 @@ class table_model
         return $arr_obj_table;
     }
 }
+
