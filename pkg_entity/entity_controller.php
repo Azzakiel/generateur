@@ -22,7 +22,8 @@ class entity_controller
     public function loadAllEntity($arr_obj_table)
     {
         $arr_obj_entity = $this->loadAttrEntity($arr_obj_table);
-        //TODO ajouter getter/setter
+        $arr_obj_entity = $this->addGetterOnAllEntity($arr_obj_entity);
+        $arr_obj_entity = $this->addSetterOnAllEntity($arr_obj_entity);
         return $arr_obj_entity;
     }
 
@@ -69,4 +70,16 @@ class entity_controller
          }
          return $arr_obj_entity;
         }
+        private function addGetterOnAllEntity ($arr_obj_entity)
+        {
+            //TODO ajouter getter
+
+            return $arr_obj_entity;
         }
+        private function addSetterOnAllEntity ($arr_obj_entity)
+        {
+            //TODO ajouter setter
+
+            return $arr_obj_entity;
+        }
+}
