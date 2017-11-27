@@ -28,7 +28,12 @@ class table_model
                 $arr_table_champ = null;
                 foreach ($arr_result_champ as $arr_one_champ)
                 {
-                    $arr_table_champ[] = $arr_one_champ['Field'];
+                    $arra_type = explode("(", $arr_one_champ['Type']);
+                    if ($arra_type[0] == "varchar")
+                    {
+                        $arra_type[0] = "str";
+                    }
+                    $arr_table_champ[] = $arra_type[0]."_".$arr_one_champ['Field'];
                 }
                 $obj_table->setArrChamp($arr_table_champ);
                 //apres les champ on récupère les foreign key dans un tableau : objet de référence => item qui est clé étrangère dans l'objet courant

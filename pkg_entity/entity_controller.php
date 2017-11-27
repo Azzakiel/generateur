@@ -21,7 +21,7 @@ class entity_controller
 
     public function loadAllEntity($arr_obj_table)
     {
-        $arr_obj_entity = loadAttrEntity($arr_obj_table);
+        $arr_obj_entity = $this->loadAttrEntity($arr_obj_table);
         //TODO ajouter getter/setter
         return $arr_obj_entity;
     }
@@ -34,7 +34,7 @@ class entity_controller
         {
              $obj_entity = new entity_entity();
              $arr_champ_entity = null;
-             $obj_entity->setStrName($obj_table->getStrName());
+             $obj_entity->setStrName("entity_".$obj_table->getStrName());
              $arr_champ_table = $obj_table->getArrChamp();
              $arr_fk_table = $obj_table->getArrFk();
              $arr_champ_temp = null;
