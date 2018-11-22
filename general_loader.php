@@ -7,10 +7,10 @@
  */
 
 session_start();
-include_once 'pkg_mysql/bdd.php';
-include_once  'pkg_html/html_loader.php';
-include_once  'pkg_generate/generate_loader.php';
-include_once  'pkg_table/table_loader.php';
-include_once  'pkg_entity/entity_loader.php';
+function autoload($classname)
+{
+    $cut_classname = explode('_', $classname)[0];
+    require 'pkg_'.$cut_classname.'/'.$classname.'.php';
+}
 
-//TODO autoload potable
+spl_autoload_register('autoload');
