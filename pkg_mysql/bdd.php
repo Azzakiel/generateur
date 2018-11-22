@@ -11,7 +11,7 @@ class bdd
     private function connexion()
     {
         // Connexion à la base de données
-        $db = new PDO('mysql:host=127.0.0.1;port=3306;dbname=parkauto', 'root', 'root');
+        $db = new PDO('mysql:host=127.0.0.1;port=3306;dbname=cv', 'root', 'root');
         return $db;
     }
     public function query ($str_requete)
