@@ -27,9 +27,17 @@ class entity_controller
         return $arr_obj_entity;
     }
 
+    /**
+     * @param $arr_obj_table tableau d'objet table
+     * @return renvoie un tableau d'objet entité contenant leurs attribut
+     */
     private function loadAttrEntity ($arr_obj_table)
     {
-        //TODO bloquer la génération de champ classique pouyr les élément déjà utilisé en temps que FK
+        /**
+         * Récupere les informations de l'entité et les stock dans un tableau
+         * - champ
+         * - clef étrangère
+         */
         $arr_obj_entity = null;
         foreach ($arr_obj_table as $obj_table)
         {
@@ -44,6 +52,11 @@ class entity_controller
                  foreach ($arr_fk_table as $key => $str_one_champ)
                  {
                      $arr_champ_entity[] = '$obj_'.$key.'_'. $str_one_champ;
+                     /**
+                      * Stock les clef étrangère dans un tableau temporaire
+                      * Il servira pour un comparatif en vue d'un bloquage
+                      * Pour éviter les duplications (champ clef etrangere + champ de son identifiant)
+                      */
                      $arr_champ_temp[] = $str_one_champ;
                  }
              }
@@ -54,7 +67,12 @@ class entity_controller
                  {
                      foreach ($arr_champ_temp as $str_one_champ_temp)
                      {
-                         if ($str_one_champ_temp == $str_one_champ)
+                         /**
+                          * Si le nom du champ sans son type correspond à une clef étrangère
+                          * On passe le teste a false pour ne pas créer de champ obsolete
+                          */
+                         $cut_str_one_champ = explode('_', $str_one_champ)[1];
+                         if ($str_one_champ_temp == $cut_str_one_champ)
                          {
                              $bool_test = false;
                          }
