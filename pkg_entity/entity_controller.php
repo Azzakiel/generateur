@@ -29,7 +29,7 @@ class entity_controller
 
     private function loadAttrEntity ($arr_obj_table)
     {
-
+        //TODO bloquer la génération de champ classique pouyr les élément déjà utilisé en temps que FK
         $arr_obj_entity = null;
         foreach ($arr_obj_table as $obj_table)
         {
