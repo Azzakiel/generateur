@@ -6,6 +6,8 @@
  * Time: 15:23
  */
 
+//TODO transformer se fichier php en objet 
+
 session_start();
 function autoload($classname)
 {
