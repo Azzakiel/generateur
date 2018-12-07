@@ -7,7 +7,7 @@
  */
 include_once 'class_loader.php';
 new class_loader();
-//TODO mise en palce d'un interface permettant à l'utilisateur de renseigner ces varaibles
+//TODO mise en place d'un interface permettant à l'utilisateur de renseigner ces varaibles
 $_SESSION['host'] = '127.0.0.1';
 $_SESSION['port'] = '3306';
 $_SESSION['dbname'] = 'cv';
