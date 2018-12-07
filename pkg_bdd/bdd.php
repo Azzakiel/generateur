@@ -8,10 +8,22 @@
  */
 class bdd
 {
+    private $bdd_chaine;
+    private $bdd_user;
+    private $bdd_pass;
+
+    private function __construct($bdd_host, $bdd_port, $bdd_dbname, $bdd_user, $bdd_pass)
+    {
+        $this->bdd_chaine = 'mysql:host='.$bdd_host.';port='.$bdd_port.';dbname='.$bdd_dbname;
+        $this->bdd_user = $bdd_user;
+        $this->bdd_pass = $bdd_pass;
+    }
+
     private function connexion()
     {
         // Connexion à la base de données
-        $db = new PDO('mysql:host=127.0.0.1;port=3306;dbname=cv', 'root', 'root');
+        //$db = new PDO('mysql:host=127.0.0.1;port=3306;dbname=cv', 'root', 'root');
+        $db = new PDO($this->bdd_chaine, $this->bdd_user, $this->bdd_pass);
         return $db;
     }
     public function query ($str_requete)
@@ -24,4 +36,5 @@ class bdd
     }
 
     //TODO insert delete update ...
+
 }

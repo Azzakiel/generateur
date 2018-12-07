@@ -11,6 +11,7 @@ class table_model
     public function loadAllTable()
     {
         //charge les nom de toutes les tables de la bdd
+        // TODO adapter l'utilisation de l'objet BDD a sa nouvel forme
         $obj_bdd = new bdd();
         $str_query = 'SHOW tables';
         $arr_result = $obj_bdd->query($str_query);
