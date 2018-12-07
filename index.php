@@ -7,6 +7,11 @@
  */
 include_once 'class_loader.php';
 new class_loader();
+$_SESSION['host'] = '127.0.0.1';
+$_SESSION['port'] = '3306';
+$_SESSION['dbname'] = 'cv';
+$_SESSION['user'] = 'root';
+$_SESSION['pass'] = 'root';
 $obj_table_controller = new table_controller();
 $arr_obj_table = $obj_table_controller -> getAllTable();
 $obj_entity_controller = new entity_controller();

@@ -12,7 +12,7 @@ class table_model
     {
         //charge les nom de toutes les tables de la bdd
         // TODO adapter l'utilisation de l'objet BDD a sa nouvel forme
-        $obj_bdd = new bdd();
+        $obj_bdd = new bdd($_SESSION['host'], $_SESSION['port'], $_SESSION['dbname'], $_SESSION['user'], $_SESSION['pass']);
         $str_query = 'SHOW tables';
         $arr_result = $obj_bdd->query($str_query);
         $arr_obj_table = null;
